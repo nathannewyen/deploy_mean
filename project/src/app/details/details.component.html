@@ -1,0 +1,24 @@
+<div class="product-details border" *ngFor="let product of productData">
+  <h3>Product Details</h3>
+  <div *ngIf="product.qty != 0">
+    <p class="text-primary">To delete a product Qty must be 0</p>
+  </div>
+  <div *ngIf="error">
+    <p class="text-danger">{{error}}</p>
+  </div>
+  <div class="info">
+    <h5> Name: {{product.name}}</h5>
+    <h5> Qty: {{product.qty}}</h5>
+    <h5> Price: ${{product.price}}</h5>
+
+    <div>
+      <button class="btn btn-secondary" [routerLink]="['/products']">Back</button>
+    </div>
+    <div *ngIf="product.qty == 0">
+      <button class="btn btn-danger" id="delete" (click)="onDelete(product._id)">Delete</button>
+    </div>
+    <div *ngIf="product.qty != 0">
+      <button class="btn btn-danger" id="delete" (click)="onDelete(product._id)" disabled>Delete</button>
+    </div>
+  </div>
+</div>
